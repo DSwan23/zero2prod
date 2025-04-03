@@ -22,6 +22,19 @@ content is published to the blog*
 2. ***As the** blog author, **I want to** send an email to my subscribers, **So that** I can notify them when new 
 content is published*
 
+## Web Framework
+
+Will be using the *actix-web* framework because it is one oldest frameworks and has seen lots of production usage
+with a large community and lots of plugins to assist us. It also runs off of the *tokio* as its async runtime.
+
+- [Actix-web](https://actix.rs/)
+- [Actix-web Docs](https://actix.rs/docs)
+- [Actix-web Examples](https://github.com/actix/examples)
+
+`cargo add actix-web@4`
+
+`cargo add tokio@1 --features macros, rt-multi-thread`
+
 ## CI and Building
 
 ### Setup
@@ -42,6 +55,7 @@ cargo install cargo-audit
 ```
 
 ### Running the CI pipeline (Locally)
+
 ```cmd
 # Run tests
 cargo tests
@@ -61,3 +75,21 @@ cargo fmt -- --check
 cargo audit
 ```
 
+## Running the Application
+
+`cargo run`
+
+runs the application at 127.0.0.1:8000 using the http
+
+## Current Endpoints
+
+### /
+
+runs the greet function, should return "Hello World"
+
+`curl http://127.0.0.1:8000`
+
+### /{name}
+
+runs the greet function with a provided string, should return "Hello {name}"
+`curl http://127.0.0.1:8000/Doug`
